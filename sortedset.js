@@ -1,4 +1,12 @@
-var sortedset = (function() {
+(function (global, factory) {
+  if (typeof exports === 'object' && typeof module !== 'undefined') {
+    module.exports = factory();
+  } else if (typeof define === 'function' && define.amd) {
+    define(factory);
+  } else {
+    global.SortedSet = factory();
+  }
+}(this, function() {
   "use strict";
 
   // Internal private array which holds actual set elements
@@ -53,4 +61,4 @@ var sortedset = (function() {
       // TODO: Implement clear method
     }
   };
-});
+}));
