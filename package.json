@@ -1,0 +1,12 @@
+{
+  "name": "sortedset",
+  "version": "0.1.0",
+  "description": "Skeleton project for implementing sorted set in JavaScript",
+  "author": "Andrew Jo",
+  "private": true,
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "gulp-jshint": "^1.11.0",
+    "mocha": "^2.2.5"
+  }
+}
