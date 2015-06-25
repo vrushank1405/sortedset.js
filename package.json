@@ -4,8 +4,12 @@
   "description": "Skeleton project for implementing sorted set in JavaScript",
   "author": "Andrew Jo",
   "private": true,
+  "scripts": {
+    "test": "mocha"
+  },
   "devDependencies": {
     "expect.js": "^0.3.1",
+    "gulp": "^3.9.0",
     "gulp-jshint": "^1.11.0",
     "mocha": "^2.2.5"
   }
