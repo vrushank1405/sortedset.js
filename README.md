@@ -80,3 +80,13 @@ about efficiency in sorting or runtime (e.g. O(n²) vs O(log n)) as we are
 trying to see if you can take the basic JavaScript building blocks and write a
 solution to solve a problem.
 
+## Grading
+
+Results will be tested against the unit test that is included in the project.
+
+Be sure to install **Node.js**, **mocha.js** before running tests.
+
+You can run the tests with `npm test` command.
+
+The candidates will be graded on code quality, DRYness, and creative
+solutions.
