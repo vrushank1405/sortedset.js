@@ -24,7 +24,7 @@ foo.toString();
 This is a skeleton code for frontend JavaScript takehome assignment which
 job candidates are expected to fork and submit their solutions.
 
-## Implentation
+## Implementation
 
 Clone this repository and implement a sorted set.
 
