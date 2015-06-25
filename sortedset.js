@@ -23,7 +23,33 @@
     }
   }
 
-  /* Returns true if a given item exists in the set
+  /* Accessor; returns element at index
+   */
+  SortedSet.prototype.at = function(index) {
+    return setArray[index];
+  };
+
+  /* Converts a set into an Array and returns the result
+   */
+  SortedSet.prototype.toArray = function() {
+    return setArray.slice(0);
+  };
+
+  /* Converts a set into a String and returns the result
+   */
+  SortedSet.prototype.toString = function() {
+    return setArray.toString();
+  };
+
+  /* Read-only property for getting number of elements in sorted set
+   */
+  Object.defineProperty(SortedSet.prototype, 'length', {
+    get: function() {
+      return setArray.length;
+    }
+  });
+
+  /* Returns true if a given element exists in the set
    */
   SortedSet.prototype.contains = function(element) {
     // TODO: Implement contains method
@@ -32,13 +58,14 @@
   /* Gets elements between startIndex and endIndex. If endIndex is omitted, a
    * single element at startIndex is returned.
    */
-  SortedSet.prototype.getItems = function(startIndex, endIndex) {
-    // TODO: Implement getItems method
+  SortedSet.prototype.get = function(startIndex, endIndex) {
+    // TODO: Implement get method
   };
 
-  /* Gets all items between specified value range.
+  /* Gets all items between specified value range. If exclusive is set, values
+   * at lower bound and upper bound are not included.
    */
-  SortedSet.prototype.getItemsBetween = function(lbound, ubound) {
+  SortedSet.prototype.getBetween = function(lbound, ubound, exclusive) {
     // TODO: Implement getItemsBetween method
   };
 
@@ -48,21 +75,23 @@
     // TODO: Implement add method
   };
 
+  /* Removes element from set and returns the element
+   */
   SortedSet.prototype.remove = function(element) {
     // TODO: Implement remove method
   };
 
-  /* Removes element at index location
+  /* Removes element at index location and returns the element
    */
   SortedSet.prototype.removeAt = function(index) {
     // TODO: Implement removeAt method
   };
 
   /* Removes elements that are larger than lower bound and smaller than upper
-   * bound
+   * bound and returns removed elements.
    */
-  SortedSet.prototype.removeBetween = function(lbound, ubound) {
-   // TODO: Implement removeBetween method
+  SortedSet.prototype.removeBetween = function(lbound, ubound, exclusive) {
+    // TODO: Implement removeBetween method
   };
 
   /* Removes all elements from the set
@@ -70,12 +99,6 @@
   SortedSet.prototype.clear = function() {
     // TODO: Implement clear method
   };
-
-  /* Converts a set into a String and returns the result
-   */
-  SortedSet.prototype.toString = function() {
-    return setArray.toString();
-  }
 
   return SortedSet;
 }));
