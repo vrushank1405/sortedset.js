@@ -2,18 +2,10 @@ var expect = require('expect.js');
 var SortedSet = require('../sortedset');
 
 describe('SortedSet', function() {
-  var sortedset = new SortedSet();
+  var sortedset;
 
   beforeEach(function(done) {
-    sortedset.clear();
-    sortedset.add(1);
-    sortedset.add(2);
-    sortedset.add(3);
-    sortedset.add(4);
-    sortedset.add(5);
-    sortedset.add(6);
-    sortedset.add(7);
-    sortedset.add(8);
+    sortedset = new SortedSet([1, 2, 3, 4, 5, 6, 7, 8]);
     done();
   });
 
@@ -173,6 +165,25 @@ describe('SortedSet', function() {
       expect(sortedset).to.have.length(2);
       expect(removedElements).to.eql([2, 3, 4, 5, 6, 7]);
       expect(sortedset.toArray()).to.eql([1, 8]);
+
+      var testSet = new SortedSet([1, 3, 5, 7, 9, 11]);
+      removedElements = testSet.removeBetween(2, 8);
+      expect(testSet).to.have.length(3);
+      expect(removedElements).to.eql([3, 5, 7]);
+      expect(testSet.toArray()).to.eql([1, 9, 11]);
+
+      testSet = new SortedSet([1, 3, 5, 7, 9, 11]);
+      removedElements = testSet.removeBetween(3, 8);
+      expect(testSet).to.have.length(3);
+      expect(removedElements).to.eql([3, 5, 7]);
+      expect(testSet.toArray()).to.eql([1, 9, 11]);
+
+      testSet = new SortedSet([1, 3, 5, 7, 9, 11]);
+      removedElements = testSet.removeBetween(2, 7);
+      expect(testSet).to.have.length(3);
+      expect(removedElements).to.eql([3, 5, 7]);
+      expect(testSet.toArray()).to.eql([1, 9, 11]);
+
       done();
     });
 
@@ -181,6 +192,25 @@ describe('SortedSet', function() {
       expect(sortedset).to.have.length(4);
       expect(removedElements).to.eql([3, 4, 5, 6]);
       expect(sortedset.toArray()).to.eql([1, 2, 7, 8]);
+
+      var testSet = new SortedSet([1, 3, 5, 7, 9, 11]);
+      removedElements = testSet.removeBetween(2, 8, true);
+      expect(testSet).to.have.length(3);
+      expect(removedElements).to.eql([3, 5, 7]);
+      expect(testSet.toArray()).to.eql([1, 9, 11]);
+
+      testSet = new SortedSet([1, 3, 5, 7, 9, 11]);
+      removedElements = testSet.removeBetween(3, 8, true);
+      expect(testSet).to.have.length(4);
+      expect(removedElements).to.eql([5, 7]);
+      expect(testSet.toArray()).to.eql([1, 3, 9, 11]);
+
+      testSet = new SortedSet([1, 3, 5, 7, 9, 11]);
+      removedElements = testSet.removeBetween(2, 7, true);
+      expect(testSet).to.have.length(4);
+      expect(removedElements).to.eql([3, 5]);
+      expect(testSet.toArray()).to.eql([1, 7, 9, 11]);
+
       done();
     });
   });
