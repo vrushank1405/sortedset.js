@@ -17,6 +17,29 @@ describe('SortedSet', function() {
     done();
   });
 
+  describe('constructor', function() {
+    describe('with initial array', function() {
+      it('instantiates with sorted unique elements', function(done) {
+        var initial = [1, 1, 2, 8, 9, 8, 3, 4, 6, 7, 5];
+        var set = new SortedSet(initial);
+
+        expect(set).to.be.a(SortedSet);
+        expect(set).to.have.length(9);
+        done();
+      });
+    });
+
+    describe('without initial array', function() {
+      it('instantiates with empty set', function(done){
+        var set = new SortedSet();
+
+        expect(set).to.be.a(SortedSet);
+        expect(set).to.be.empty();
+        done();
+      });
+    });
+  });
+
   describe('#add', function() {
     it('adds new element to the set if not already in set', function(done) {
       sortedset.add(10);
@@ -84,12 +107,30 @@ describe('SortedSet', function() {
 
   describe('#getBetween', function() {
     it('returns elements between given values inclusively', function(done) {
+      // Case when lower and upper bound value exists in the set
       expect(sortedset.getBetween(2, 7)).to.eql([2, 3, 4, 5, 6, 7]);
+
+      // We still want the elements between lower and upper bound values even
+      // if the lower and upper bound values themselves don't exist in set
+      sortedset = new SortedSet([1, 3, 5, 7, 9]);
+      expect(sortedset.getBetween(2, 8)).to.eql([3, 5, 7]);
+      expect(sortedset.getBetween(3, 8)).to.eql([3, 5, 7]);
+      expect(sortedset.getBetween(2, 7)).to.eql([3, 5, 7]);
+
       done();
     });
 
     it('returns elements between given values exclusively', function(done) {
+      // Case when lower and upper bound value exists in the set
       expect(sortedset.getBetween(2, 7, true)).to.eql([3, 4, 5, 6]);
+
+      // We still want the elements between lower and upper bound values even
+      // if the lower and upper bound values themselves don't exist in set
+      sortedset = new SortedSet([1, 3, 5, 7, 9]);
+      expect(sortedset.getBetween(2, 8, true)).to.eql([3, 5, 7]);
+      expect(sortedset.getBetween(3, 8, true)).to.eql([5, 7]);
+      expect(sortedset.getBetween(2, 7, true)).to.eql([3, 5]);
+
       done();
     });
   });
@@ -102,6 +143,12 @@ describe('SortedSet', function() {
       expect(removedElement).to.equal(2);
       done();
     });
+
+    it('remains sorted after removal', function(done) {
+      sortedset.remove(5);
+      expect(sortedset.toArray()).to.eql([1, 2, 3, 4, 6, 7, 8])
+      done();
+    });
   });
 
   describe('#removeAt', function() {
@@ -110,6 +157,12 @@ describe('SortedSet', function() {
       expect(sortedset).to.have.length(7);
       expect(sortedset.at(0)).to.equal(2);
       expect(removedElement).to.equal(1);
+      done();
+    });
+
+    it('remains sorted after removal', function(done) {
+      sortedset.removeAt(3);
+      expect(sortedset.toArray()).to.eql([1, 2, 3, 5, 6, 7, 8]);
       done();
     });
   });
