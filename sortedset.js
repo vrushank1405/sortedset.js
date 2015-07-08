@@ -18,6 +18,7 @@
       // TODO: Handle the case when initial array is provided; if array has
       // elements of duplicate value, reduce down to one instance and sort the
       // elements in ascending order.
+      setArray = [];
     } else {
       setArray = [];
     }
@@ -39,6 +40,23 @@
    */
   SortedSet.prototype.toString = function() {
     return setArray.toString();
+  };
+
+  /* Synchronously iterates elements in the set
+   */
+  SortedSet.prototype.forEach = function(callback, thisArg) {
+    if (this === void 0 || this === null ||
+        setArray === void 0 || setArray === null) throw new TypeError();
+
+    var t = Object(setArray);
+    var len = t.length >>> 0;
+    if (typeof callback !== "function")
+      throw new TypeError();
+
+    var context = arguments[1];
+    for (var i = 0; i < len; i++) {
+      if (i in t) callback.call(context, t[i], i, t);
+    }
   };
 
   /* Read-only property for getting number of elements in sorted set
@@ -66,7 +84,7 @@
    * at lower bound and upper bound are not included.
    */
   SortedSet.prototype.getBetween = function(lbound, ubound, exclusive) {
-    // TODO: Implement getItemsBetween method
+    // TODO: Implement getBetween method
   };
 
   /* Adds new element to the set if not already in set
@@ -98,6 +116,15 @@
    */
   SortedSet.prototype.clear = function() {
     // TODO: Implement clear method
+  };
+
+  /* BONUS MARKS AWARDED IF IMPLEMENTED
+   * Implement an asynchronous forEach function. (See above for synchrnous
+   * implementation). This method ASYNCHRONOUSLY iterates through each elements
+   * in the array and calls a callback function.
+   */
+  SortedSet.prototype.forEachAsync = function(callback, thisArg) {
+    // TODO: Implement for bonus marks
   };
 
   return SortedSet;
