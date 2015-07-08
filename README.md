@@ -24,10 +24,30 @@ foo.toString();
 This is a skeleton code for frontend JavaScript takehome assignment which
 job candidates are expected to fork and submit their solutions.
 
-## Implentation
+## Implementation
 
-Clone this repository and implement a sorted set. You may use the following
-built-in JavaScript array methods for your implementation:
+Clone this repository and implement a sorted set.
+
+These are the functions that need to be implemented for this assignment:
+
+* **add(el)**: Adds new element to the sorted set if not already in set
+* **clear()**: Clears all elements in set
+* **contains(el)**: Returns `true` if a given element exists in the set
+* **get(startIndex, endIndex)**: Gets elements between `startIndex` and
+  `endIndex`. If `endIndex` is omitted, a single element at `startIndex` is
+  returned.
+* **getBetween(lbound, ubound, exclusive)**: Gets all elements between
+  specified value range. If `exclusive` is `true`, values at lower bound and
+  upper bound are not inclusive.
+* **remove(element)**: Removes element from set and returns the element.
+* **removeAt(index)**: Removes element at index location and returns the
+  element.
+* **removeBetween(lbound, ubound, exclusive)**: Removes elements between
+  specified value range. If `exclusive` is `true`, elements are remove
+  exclusively.
+
+You may use the following built-in JavaScript array methods for your
+implementation:
 
 * [`concat(a, b, c, ...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat):
   joins two or more arrays and returns a copy of the
@@ -55,26 +75,18 @@ built-in JavaScript array methods for your implementation:
 * [`unshift(x)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift):
   adds new element `x` to the beginning of the array and returns the new array length
 
-These are the functions that need to be implemented for this assignment:
-
-* **add(el)**: Adds new element to the sorted set if not already in set
-* **clear()**: Clears all elements in set
-* **contains(el)**: Returns `true` if a given element exists in the set
-* **get(startIndex, endIndex)**: Gets elements between `startIndex` and
-  `endIndex`. If `endIndex` is omitted, a single element at `startIndex` is
-  returned.
-* **getBetween(lbound, ubound, exclusive)**: Gets all elements between
-  specified value range. If `exclusive` is `true`, values at lower bound and
-  upper bound are not inclusive.
-* **remove(element)**: Removes element from set and returns the element.
-* **removeAt(index)**: Removes element at index location and returns the
-  element.
-* **removeBetween(lbound, ubound, exclusive)**: Removes elements between
-  specified value range. If `exclusive` is `true`, elements are remove
-  exclusively.
-
 You are _**not**_ allowed to use external JavaScript libraries. Do not worry
 about efficiency in sorting or runtime (e.g. O(n²) vs O(log n)) as we are
 trying to see if you can take the basic JavaScript building blocks and write a
 solution to solve a problem.
 
+## Grading
+
+Results will be tested against the unit test that is included in the project.
+
+Be sure to install **Node.js**, **mocha.js** before running tests.
+
+You can run the tests with `npm test` command.
+
+The candidates will be graded on code quality, DRYness, and creative
+solutions.
