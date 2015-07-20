@@ -13,5 +13,33 @@
     "gulp-jshint": "^1.11.0",
     "gulp-mocha": "^2.1.2",
     "mocha": "^2.2.5"
+  },
+  "jshintConfig": {
+    "browser": true,
+    "browserify": true,
+    "boss": true,
+    "curly": true,
+    "debug": false,
+    "devel": true,
+    "eqeqeq": true,
+    "eqnull": true,
+    "evil": true,
+    "forin": false,
+    "immed": false,
+    "noarg": true,
+    "node": true,
+    "noempty": false,
+    "nonew": false,
+    "nomen": false,
+    "onevar": false,
+    "plusplus": false,
+    "regexp": false,
+    "sub": true,
+    "undef": true,
+    "unused": true,
+    "globals": {
+      "define": false,
+      "module": false
+    }
   }
 }
