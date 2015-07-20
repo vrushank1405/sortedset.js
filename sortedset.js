@@ -46,12 +46,15 @@
    */
   SortedSet.prototype.forEach = function(callback, thisArg) {
     if (this === void 0 || this === null ||
-        setArray === void 0 || setArray === null) throw new TypeError();
+        setArray === void 0 || setArray === null) {
+      throw new TypeError();
+    }
 
     var t = Object(setArray);
     var len = t.length >>> 0;
-    if (typeof callback !== "function")
+    if (typeof callback !== "function") {
       throw new TypeError();
+    }
 
     var context = arguments[1];
     for (var i = 0; i < len; i++) {
