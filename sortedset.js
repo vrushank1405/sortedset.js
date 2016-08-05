@@ -96,6 +96,13 @@
     // TODO: Implement add method
   };
 
+
+  /* BONUS MARKS AWARDED IF IMPLEMENTED
+   * Implement an asynchronous forEach function. (See above for synchrnous
+   * implementation). This method ASYNCHRONOUSLY iterates through each elements
+   * in the array and calls a callback function.
+   */
+
   /* Removes element from set and returns the element
    */
   SortedSet.prototype.remove = function(element) {
@@ -121,11 +128,6 @@
     // TODO: Implement clear method
   };
 
-  /* BONUS MARKS AWARDED IF IMPLEMENTED
-   * Implement an asynchronous forEach function. (See above for synchrnous
-   * implementation). This method ASYNCHRONOUSLY iterates through each elements
-   * in the array and calls a callback function.
-   */
   SortedSet.prototype.forEachAsync = function(callback, thisArg) {
     // TODO: Implement for bonus marks
   };

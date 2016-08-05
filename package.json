@@ -5,7 +5,8 @@
   "author": "Andrew Jo",
   "private": true,
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "bonus_test": "gulp bonus_test"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",
