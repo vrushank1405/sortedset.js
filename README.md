@@ -2,6 +2,9 @@
 
 Sorted set is a datatype which keeps a unique set of values in sorted order.
 
+The candidates will be graded on **code quality**, **DRYness**, and **creative
+solutions**.
+
 For example, this library can be used as follows:
 ```javascript
 var foo = new SortedSet([2, 4, 1]);
@@ -39,6 +42,9 @@ These are the functions that need to be implemented for this assignment:
 * **getBetween(lbound, ubound, exclusive)**: Gets all elements between
   specified value range. If `exclusive` is `true`, values at lower bound and
   upper bound are not inclusive.
+
+These functions are optional, if time permitting (covered by optional_tests):
+
 * **remove(element)**: Removes element from set and returns the element.
 * **removeAt(index)**: Removes element at index location and returns the
   element.
@@ -86,7 +92,6 @@ Results will be tested against the unit test that is included in the project.
 
 Be sure to install **Node.js**, **mocha.js** before running tests.
 
-You can run the tests with `npm test` command.
+You can run the tests with `npm test` command (`npm run optional_test` will cover the optional tasks)
 
-The candidates will be graded on code quality, DRYness, and creative
-solutions.
+

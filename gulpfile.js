@@ -11,6 +11,12 @@ gulp.task('lint', function() {
 });
 
 gulp.task('test', ['lint'], function() {
-  return gulp.src('test/*.js')
+  return gulp.src('test/sortedset.js')
+             .pipe(mocha());
+});
+
+
+gulp.task('bonus_test', ['lint'], function() {
+  return gulp.src('test/bonus.js')
              .pipe(mocha());
 });
