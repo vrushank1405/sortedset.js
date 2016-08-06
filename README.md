@@ -88,6 +88,8 @@ solution to solve a problem.
 
 ## Grading
 
+When you are done, please screenshot your unit test results and submit your repo in a **tar.gz or zip file to jobs@verdigris.co as an attachment**.
+
 Results will be tested against the unit test that is included in the project.
 
 Be sure to install **Node.js**, **mocha.js** before running tests.
