@@ -94,6 +94,6 @@ Results will be tested against the unit test that is included in the project.
 
 Be sure to install **Node.js**, **mocha.js** before running tests.
 
-You can run the tests with `npm test` command (`npm run optional_test` will cover the optional tasks)
+You can run the tests with `npm test` command (`npm run bonus_test` will cover the optional tasks)
 
 
