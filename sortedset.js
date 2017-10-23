@@ -18,7 +18,14 @@
       // TODO: Handle the case when initial array is provided; if array has
       // elements of duplicate value, reduce down to one instance and sort the
       // elements in ascending order.
-      setArray = [];
+        initial.sort(function(a, b) {
+          return a - b;
+        });
+        var temp = initial.filter(function (e, i){
+          return initial.indexOf(e, i+1) === -1;
+        });
+
+      setArray = temp.slice();
     } else {
       setArray = [];
     }
@@ -74,6 +81,13 @@
    */
   SortedSet.prototype.contains = function(element) {
     // TODO: Implement contains method
+      for(var i = 0; i < setArray.length; i++){
+        if(setArray[i] === element)
+        {
+          return true;
+        }
+      }
+      return false;
   };
 
   /* Gets elements between startIndex and endIndex. If endIndex is omitted, a
@@ -81,6 +95,11 @@
    */
   SortedSet.prototype.get = function(startIndex, endIndex) {
     // TODO: Implement get method
+      if(!endIndex){
+        return setArray[startIndex];
+      } else {
+        return setArray.slice(startIndex, endIndex+1);
+      }
   };
 
   /* Gets all items between specified value range. If exclusive is set, values
@@ -88,12 +107,103 @@
    */
   SortedSet.prototype.getBetween = function(lbound, ubound, exclusive) {
     // TODO: Implement getBetween method
+      var lower = 0,
+          upper = setArray.length;
+
+      if(exclusive !== true){
+        if(lbound > ubound)
+          return setArray.sliceRange(lbound, ubound);
+
+        reach: {
+          while(lower < upper) {
+              var m = Math.floor(lower + (upper - lower) / 2);
+              if (setArray[m] < lbound)
+                  lower = m + 1;
+              else if (setArray[m] > ubound)
+                  upper = m;
+              else
+                  break reach;
+          }
+          return [];
+
+          }
+
+          var lr = m,
+              rl = m;
+
+        while(lower < lr){
+          m = Math.floor(lower + (lr - lower) / 2);
+          if(setArray[m] < lbound)
+            lower = m + 1;
+          else
+            lr = m;
+        }
+
+        while(rl<upper){
+          m = Math.floor(rl + (upper -rl)/2);
+          if(setArray[m] > ubound)
+            upper = m;
+          else
+            rl = m + 1;
+        }
+
+        return setArray.slice(lower, upper);
+
+      } else if (exclusive === true){
+        if(lbound > ubound)
+          return setArray.sliceRange(ubound, lbound);
+
+        reach: {
+          while(lower < upper){
+            var m = Math.floor(lower + (upper - lower) / 2);
+            if(setArray[m] < lbound)
+              lower = m + 1;
+            else if(setArray[m] > ubound)
+              upper = m;
+            else
+              break reach;
+          }
+
+          return [];
+        }
+
+        var lr = m,
+            rl = m;
+
+        while(lower < lr){
+          m = Math.floor(lower + (lr - lower) / 2 );
+          if(setArray[m] < lbound + 1)
+            lower = m + 1;
+          else
+            lr = m;
+        }
+
+        while(rl < upper){
+          m = Math.floor(rl + (upper - rl) / 2);
+          if(setArray[m] > ubound-1)
+            upper = m;
+          else
+            rl = m + 1;
+        }
+
+        return setArray.slice(lower, upper);
+      }
   };
 
   /* Adds new element to the set if not already in set
    */
   SortedSet.prototype.add = function(element) {
     // TODO: Implement add method
+      var i = 0;
+
+      if(setArray.indexOf(element) === -1){
+        while(i < setArray.length && setArray[i] < element){
+          i++;
+        }
+
+        setArray.splice(i, 0, element);
+        return setArray;
+      }
   };
 
 
@@ -107,12 +217,18 @@
    */
   SortedSet.prototype.remove = function(element) {
     // TODO: Implement remove method
+      var indexOfElement = setArray.indexOf(element);
+
+      if(indexOfElement != -1){
+        setArray.splice(indexOfElement, 1);
+      }
   };
 
   /* Removes element at index location and returns the element
    */
   SortedSet.prototype.removeAt = function(index) {
     // TODO: Implement removeAt method
+      return setArray.splice(index, 1);
   };
 
   /* Removes elements that are larger than lower bound and smaller than upper
@@ -126,6 +242,9 @@
    */
   SortedSet.prototype.clear = function() {
     // TODO: Implement clear method
+      if(setArray.length > 0){
+        setArray = [];
+      }
   };
 
   SortedSet.prototype.forEachAsync = function(callback, thisArg) {
